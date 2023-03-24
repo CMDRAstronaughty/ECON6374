@@ -1,0 +1,254 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Problem Set 2 - Demonstrate the convergence of a t distribution},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Problem Set 2 - Demonstrate the convergence of a t distribution}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{group-3-sai-myint-yoojin-oh-liz-ward-karl-wirth}{%
+\section{Group 3 : Sai Myint, Yoojin Oh, Liz Ward, Karl
+Wirth}\label{group-3-sai-myint-yoojin-oh-liz-ward-karl-wirth}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(cowplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-1}{%
+\subsection{Question 1:}\label{question-1}}
+
+\hypertarget{generate-50000-observations-from-a-random-t-gen-t03-rt3-distribution-with-the-following-degrees-of-freedom-3-6-12-27-59-and-also-a-standard-normal-distribution.}{%
+\subsubsection{Generate 50,000 observations from a random t (gen t03=
+rt(3)) distribution with the following degrees of freedom {[}3, 6, 12,
+27, 59{]} and also a standard normal
+distribution.}\label{generate-50000-observations-from-a-random-t-gen-t03-rt3-distribution-with-the-following-degrees-of-freedom-3-6-12-27-59-and-also-a-standard-normal-distribution.}}
+
+\hfill\break
+Setting up the plots for the t distributions and standard normal
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating t distributions for each degree of freedom}
+\NormalTok{t\_dist3 }\OtherTok{\textless{}{-}} \FunctionTok{rt}\NormalTok{(}\DecValTok{50000}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{t\_dist6 }\OtherTok{\textless{}{-}} \FunctionTok{rt}\NormalTok{(}\DecValTok{50000}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{t\_dist12 }\OtherTok{\textless{}{-}} \FunctionTok{rt}\NormalTok{(}\DecValTok{50000}\NormalTok{,}\DecValTok{12}\NormalTok{)}
+\NormalTok{t\_dist27 }\OtherTok{\textless{}{-}} \FunctionTok{rt}\NormalTok{(}\DecValTok{50000}\NormalTok{,}\DecValTok{27}\NormalTok{)}
+\NormalTok{t\_dist59 }\OtherTok{\textless{}{-}} \FunctionTok{rt}\NormalTok{(}\DecValTok{50000}\NormalTok{,}\DecValTok{59}\NormalTok{)}
+
+\CommentTok{\# Distribution for standard normal}
+\NormalTok{normal }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Generating the Plots for t distribution {[}3,6,12,27,59{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(t\_dist3)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ProblemSet2_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(t\_dist6)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ProblemSet2_files/figure-latex/unnamed-chunk-3-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(t\_dist12)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ProblemSet2_files/figure-latex/unnamed-chunk-3-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(t\_dist27)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ProblemSet2_files/figure-latex/unnamed-chunk-3-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(t\_dist59)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ProblemSet2_files/figure-latex/unnamed-chunk-3-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(normal)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ProblemSet2_files/figure-latex/unnamed-chunk-3-6.pdf}
+
+We can see that when the degrees of freedom increases in the
+t-distribution it approaches a standard normal. With the degree of
+freedom at 59, the distribution looks very close to a standard normal
+distribution.
+
+\hypertarget{two-tailed-95-scores-of-the-t-distribution}{%
+\subsection{Two Tailed 95\% Scores of the T
+Distribution}\label{two-tailed-95-scores-of-the-t-distribution}}
+
+Determine the two tailed 95\% scores of the t distribution for each
+degree of freedom and compare them to a z of the significance (1.96)
+
+\hypertarget{calculating-the-two-tail-95-score}{%
+\paragraph{Calculating the Two Tail 95\%
+score}\label{calculating-the-two-tail-95-score}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Z Score for the significance of 1.96}
+\NormalTok{zscore }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Calculating T scores for each Degrees of Freedom}
+\NormalTok{tscore3 }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{tscore6 }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{tscore12 }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{12}\NormalTok{)}
+\NormalTok{tscore27 }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{27}\NormalTok{)}
+\NormalTok{tscore59 }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{59}\NormalTok{)}
+
+\CommentTok{\# Combinding all the t score for each DF to t\_scores to print all in one}
+\NormalTok{t\_scores }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(tscore3,tscore6,tscore12,tscore27,tscore59)}
+
+\CommentTok{\# Printing Scores}
+\FunctionTok{print}\NormalTok{ (t\_scores)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.353363 1.943180 1.782288 1.703288 1.671093
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{ (zscore)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6.313752
+\end{verbatim}
+
+The Z score is significantly higher than the t scores of every
+distribution. We expected this because the degrees of freedom is like a
+safety net, and is a more conservative test than the standard normal
+distribution.
+
+\end{document}

@@ -1,0 +1,97 @@
+---
+title: "Problem Set 2 - Demonstrate the convergence of a t distribution"
+output: html_notebook
+---
+
+# Group 3 : Sai Myint, Yoojin Oh, Liz Ward, Karl Wirth
+
+```{r}
+library(ggplot2)
+library(cowplot)
+```
+
+## Question 1:
+
+### Generate 50,000 observations from a random t (gen t03= rt(3)) distribution with the following degrees of freedom [3, 6, 12, 27, 59] and also a standard normal distribution.
+
+\
+Setting up the plots for the t distributions and standard normal
+
+```{r}
+# Creating t distributions for each degree of freedom
+t_dist3 <- rt(50000,3)
+t_dist6 <- rt(50000,6)
+t_dist12 <- rt(50000,12)
+t_dist27 <- rt(50000,27)
+t_dist59 <- rt(50000,59)
+
+t_distdf <- data.frame(t_dist3,t_dist6,t_dist12,t_dist27,t_dist59)
+# Distribution for standard normal
+normal <- rnorm(50000)
+```
+
+Generating the Plots for t distribution [3,6,12,27,59]
+
+```{r}
+hist(t_dist3)
+hist(t_dist6)
+hist(t_dist12)
+hist(t_dist27)
+hist(t_dist59)
+hist(normal)
+```
+
+We can see that when the degrees of freedom increases in the t-distribution it approaches a standard normal. With the degree of freedom at 59, the distribution looks very close to a standard normal distribution.
+
+## Two Tailed 95% Scores of the T Distribution
+
+Determine the two tailed 95% scores of the t distribution for each degree of freedom and compare them to a z of the significance (1.96)
+
+#### Calculating the Two Tail 95% score
+
+```{r}
+# Z Score for the significance of 1.96
+zscore <- 1.96
+
+# Calculating T scores for each Degrees of Freedom
+t_scores <- qt(0.95, c(3, 6, 12, 27, 59))
+
+# Printing Scores
+print (t_scores)
+print (zscore)
+```
+
+The Z score is significantly higher than the t scores of every distribution. We expected this because the degrees of freedom is like a safety net, and is a more conservative test than the standard normal distribution.
+
+## Kernel Density Plot
+
+```{r}
+# Creating Kernel Density Plot for each t-distribution
+ggplot(t_distdf,aes(t_dist3)) + geom_histogram(aes(y = stat(density))) + geom_density(col = "red") + ggtitle("T Distribution DF = 3")
+
+ggplot(t_distdf,aes(t_dist6)) + geom_histogram(aes(y = stat(density))) + geom_density(col = "blue") + ggtitle("T Distribution DF = 6")
+
+ggplot(t_distdf,aes(t_dist12)) + geom_histogram(aes(y = stat(density))) + geom_density(col = "green") + ggtitle("T Distribution DF = 12")
+
+ggplot(t_distdf,aes(t_dist27)) + geom_histogram(aes(y = stat(density))) + geom_density(col = "orange") + ggtitle("T Distribution DF = 27")
+
+ggplot(t_distdf,aes(t_dist59)) + geom_histogram(aes(y = stat(density))) + geom_density(col = "yellow") + ggtitle("T Distribution DF = 59")
+```
+
+#### (a) At what value do you feel the normal approximation of a t is \"good enough\" and why based on this plot?
+
+Based on the plots, the t-distribution with a degree of freedom of 59 closely resembles a normal distribution. Good enough without a near perfect would be DF=27. The difference between 59 and 27 is that at DF=29 you get more data in the tails than DF=27.
+
+#### (a) Why would a normal distribution be a poor approximation for a t-distribution with 3 degrees of freedom. Make a normal probability plot (pnorm t03) and interpret it as part of your answer.
+
+The distribution for t-distribution with 3 DF is very peaked compared to the normal probability plot. This means that there are more extreme values in the t-distribution compared to the standard normal. In the standard normal plot, there is even distribution within the tails and throughout the curve.
+
+We can see from the graph below, that there are going to be missing values (ie. the gaps).
+
+```{r}
+norm <- rnorm(50000)
+normDF <- data.frame(norm,t_dist3)
+
+plot(density(normDF$norm))
+lines(density(normDF$t_dist3))
+```
