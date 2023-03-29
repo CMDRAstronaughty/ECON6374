@@ -78,7 +78,7 @@ ggplot(t_distdf,aes(t_dist27)) + geom_histogram(aes(y = stat(density))) + geom_d
 ggplot(t_distdf,aes(t_dist59)) + geom_histogram(aes(y = stat(density))) + geom_density(col = "yellow") + ggtitle("T Distribution DF = 59")
 ```
 
-#### (a) At what value do you feel the normal approximation of a t is \"good enough\" and why based on this plot?
+#### (a) At what value do you feel the normal approximation of a t is "good enough" and why based on this plot?
 
 Based on the plots, the t-distribution with a degree of freedom of 59 closely resembles a normal distribution. Good enough without a near perfect would be DF=27. The difference between 59 and 27 is that at DF=29 you get more data in the tails than DF=27.
 
