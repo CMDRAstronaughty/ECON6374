@@ -1,0 +1,141 @@
+---
+title: "Homework 8"
+author: "Sai Myint, Liz Ward, Karl Wirth, Yoojin Oh"
+date: "2023-04-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Question 3 - Simulate a data set using Weibull
+
+## Creating & Plotting Vectors 1-3
+
+```{r}
+# Instating Libraries
+library(MASS)
+```
+
+```{r}
+# Vector 1 (1.30,0.6)
+v1<-rweibull(70,1.3,0.6)
+plot(v1,xlab="Numbers",ylab="Freq.")
+```
+
+```{r}
+# Vector 2 (1.10,0.9)
+v2<-rweibull(70,1.1,0.9)
+plot(v2,xlab="Numbers",ylab="Freq.")
+```
+
+```{r}
+# Vector 3 (1,4)
+v3<-rweibull(70,1.1,0.9)
+plot(v3,xlab="Numbers",ylab="Freq.")
+```
+
+Looking at vectors 1,2 and 3; Vector 2 looks the closest to normal. It looks like Vectors 1 and 3 have some skeweness to them. We can use the Wilcoxon test to see how different it is from a normal distribution.
+
+## One Sample Wilcoxon Test
+
+```{r}
+wilcox.test(v1,mu=0)
+wilcox.test(v2,mu=0)
+wilcox.test(v3,mu=0)
+```
+
+## T-test
+
+```{r}
+t.test(v1,mu=0)
+t.test(v2,mu=0)
+t.test(v3,mu=0)
+```
+
+## Interpreting the Results
+
+|               | P-Value   |
+|---------------|-----------|
+| v1 (Wilcoxon) | 3.637e-13 |
+| v2 (Wilcoxon) | 3.637e-13 |
+| v3 (Wilcoxon) | 3.637e-13 |
+| t1 (T-test)   | 5.613e-16 |
+| t2 (T-test)   | 3.22e-12  |
+| t3 (T-test)   | 5.686e-14 |
+
+The Wilcoxon gives a consistent p-value despite the random Weibull distribution, while the T-test gives different values. This means that the Wilcoxon test is better at testing whether the data is significantly or not different from a normal distribution.
+
+This is expected because the Wilcoxon is more robust to non-normal than the t-test, as long as the two datasets have similar shape you can run the Wilcoxon test, while the t-test requires data closer to normal.
+
+# Question 4
+
+Using the world bank data set
+
+**\*\*NO NEED TO RUN CODE BELOW\*\***
+
+```{r}
+# library(dplyr)
+# # Note for user:
+# WB_Data<-read.csv("~/Documents/GitHub/ECON6374/Homework 8/013b1bb8-db90-4b3f-8a91-24d276284668_Data.csv")
+# 
+# # Rename Columns for better indexing
+# WorldBankDF<- rename(WB_Data,Country_Name=Country.Name,
+#     Country_Code=Country.Code,
+#     Series_Name=Series.Name,
+#     Series_Code=Series.Code,
+#     Year_2019=X2019..YR2019.,
+#     Year_2020=X2020..YR2020.)
+# 
+# # Saving Dataset as R DataFile for easier sharing and ingest
+# save(WorldBankDF,file = "WorldBank.RData")
+```
+
+## Loading R Data File (Start Here)
+
+```{r}
+#Set your working directory below and load R Data File
+setwd()
+load("WorldBank.RData")
+```
+
+```{r}
+library(tidyverse)
+library(car)
+```
+
+## (a) Summarize the dataset. Why does R not provides means for the numeric variables.
+
+```{r}
+summary(WorldBankDF)
+```
+
+## (b) Recode the missing values and reformatting the data
+
+```{r}
+WorldBankDF$Year_2019 <- as.numeric(recode(WorldBankDF[,"Year_2019"],"'..'=NA"))
+WorldBankDF$Year_2020 <- as.numeric(recode(WorldBankDF[,"Year_2020"],"'..'=NA"))
+```
+
+## (c) Create a wide dataset with just the trade and income data in seperate columns
+
+```{r}
+wb.wide<- reshape(WorldBankDF,idvar = "Country_Name",v.names = c("Year_2019","Year_2020"),timevar = "Series_Code",direction = "wide")
+
+wb.wide1<- wb.wide[,-c(3,8,9)]
+```
+
+## (d) Reshape the data to be long with 2019 and 2020 in the same columns
+
+```{r}
+wb.long<- reshape(wb.wide1,idvar = "Country_Name",varying = list(c(3,4),c(5,6)),v.names = c("trade","income"),direction = "long")
+
+wb.long$year = wb.long$time+2018
+
+# Cleaning data where there is no value in both trade and income. 
+wb.long<-wb.long %>%
+  filter(!if_all(c(trade,income),is.na))
+```
+
+## (e) Plot
